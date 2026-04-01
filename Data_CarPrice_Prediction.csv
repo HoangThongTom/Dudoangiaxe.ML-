@@ -1,0 +1,139 @@
+Brand,model,Age,kmDriven,Transmission,Owner,FuelType,AskPrice,km_per_year,post_year,post_month
+Mercedes-Benz,E-Class,18,90962,Automatic,second,Diesel,510000,5053,2026,11
+Jaguar,Xj,9,84817,Automatic,second,Petrol,2164000,9424,2026,11
+Mercedes-Benz,Glc Class,7,62604,Automatic,second,Diesel,2451000,8943,2026,11
+Force,Motors Fm Trax Cruiser,0,18871,Manual,first,Diesel,1480000,18871,2026,11
+Mahindra,Xuv500,8,96160,Manual,second,Diesel,552000,12020,2026,11
+Ford,Figo,11,47783,Manual,first,Petrol,157000,4344,2026,11
+Toyota,Innova Hycross,0,18803,Automatic,first,Hybrid/CNG,2463000,18803,2026,11
+Renault,Triber,3,34201,Manual,first,Petrol,560000,11400,2026,11
+Maruti Suzuki,Swift,9,76842,Manual,first,Hybrid/CNG,367000,8538,2026,11
+Hyundai,Grand I10,5,41647,Automatic,second,Hybrid/CNG,509000,8329,2026,11
+Audi,A6,10,63850,Automatic,second,Diesel,951000,6385,2026,11
+Ambassador,Ambassador,9,19,Manual,second,Petrol,1029000,2,2026,11
+Toyota,Fortuner,7,167412,Automatic,first,Diesel,2492000,23916,2026,11
+Kia,Sonet,1,2262,Automatic,first,Diesel,1348000,2262,2026,11
+Mercedes-Benz,E-Class,10,83247,Automatic,second,Diesel,1393000,8325,2026,11
+Honda,Amaze,6,63242,Automatic,first,Diesel,778000,10540,2026,10
+Ford,Ecosport,10,79310,Manual,first,Diesel,435000,7931,2026,11
+Hyundai,Grand I10,8,25127,Automatic,first,Petrol,478000,3141,2026,10
+Honda,City Zx,16,112642,Automatic,second,Hybrid/CNG,145000,7040,2026,11
+Mahindra,Bolero Neo,2,92977,Manual,first,Diesel,783000,46488,2026,11
+Tata,Tiago,4,37173,Automatic,second,Petrol,428000,9293,2026,11
+Mitsubishi,Pajero Sport,12,91793,Manual,second,Diesel,772000,7649,2026,11
+Audi,Q3,2,41021,Automatic,first,Petrol,2386000,20510,2026,11
+Kia,Seltos,2,20409,Automatic,second,Petrol,1403000,10204,2026,11
+Hyundai,I20,2,174271,Manual,first,Petrol,632000,87136,2026,8
+Toyota,Innova Crysta,7,33077,Manual,first,Diesel,1375000,4725,2026,11
+Honda,City Zx,16,122621,Automatic,second,Hybrid/CNG,146000,7664,2026,11
+Nissan,Micra,12,71657,Manual,second,Petrol,182000,5971,2026,11
+Hyundai,Eon,11,78447,Manual,second,Petrol,200000,7132,2026,11
+Mahindra,Xuv500,9,176707,Manual,first,Diesel,563000,19634,2026,8
+Volkswagen,Polo,7,62149,Manual,first,Petrol,662000,8878,2026,10
+Honda,City Zx,12,63626,Manual,second,Petrol,325000,5302,2026,11
+Honda,City,7,114134,Manual,second,Diesel,711000,16305,2026,11
+Skoda,Kushaq,2,37512,Manual,first,Petrol,1271000,18756,2026,11
+Honda,City,2,15297,Automatic,first,Petrol,1438000,7648,2026,11
+Honda,City,10,96168,Automatic,second,Petrol,451000,9617,2026,11
+Hyundai,Verna,11,105754,Manual,second,Petrol,310000,9614,2026,11
+Toyota,Etios Liva,6,63251,Manual,first,Hybrid/CNG,504000,10542,2026,10
+BMW,7 Series,15,40706,Automatic,first,Petrol,982000,2714,2026,11
+Maruti Suzuki,Baleno,2,31529,Automatic,second,Petrol,675000,15764,2026,11
+Mercedes-Benz,M-Class,12,133006,Automatic,first,Diesel,1741000,11084,2026,11
+Mercedes-Benz,E-Class,12,72011,Automatic,second,Diesel,995000,6001,2026,11
+Tata,Nexon,5,36243,Manual,first,Diesel,646000,7249,2026,11
+Mahindra,Bolero,6,145891,Manual,first,Diesel,617000,24315,2026,11
+Mahindra,Bolero,2,55910,Manual,first,Diesel,828000,27955,2026,11
+BMW,5 Series,6,66212,Automatic,second,Petrol,2355000,11035,2026,11
+Tata,Zest,9,87001,Manual,second,Hybrid/CNG,200000,9667,2026,11
+Maruti Suzuki,Alto,17,83740,Manual,second,Hybrid/CNG,83000,4926,2026,11
+Hyundai,Venue,5,71740,Manual,second,Petrol,625000,14348,2026,11
+Toyota,Urban Cruiser,2,10813,Automatic,first,Petrol,961000,5406,2026,11
+Mercedes-Benz,S-Class,10,161567,Automatic,second,Diesel,2387000,16157,2026,11
+Hyundai,Elite I20,9,39356,Manual,second,Petrol,476000,4373,2026,11
+Honda,City Zx,17,59335,Manual,second,Petrol,97000,3490,2026,11
+Maruti Suzuki,Brezza,7,163844,Manual,second,Diesel,576000,23406,2026,9
+Hyundai,Elantra,9,79433,Automatic,first,Diesel,665000,8826,2026,11
+Honda,City,8,28543,Automatic,first,Petrol,687000,3568,2026,11
+Hyundai,Fluidic Verna,6,159884,Manual,first,Petrol,858000,26647,2026,11
+Hyundai,Elantra,10,96213,Automatic,second,Petrol,572000,9621,2026,11
+Maruti Suzuki,Wagon-R,8,86920,Manual,second,Petrol,359000,10865,2026,11
+Toyota,Innova Crysta,8,158759,Automatic,second,Diesel,1603000,19845,2026,10
+Mahindra,Tuv,5,96173,Manual,first,Diesel,656000,19235,2026,11
+Hyundai,I20,7,49140,Manual,first,Petrol,567000,7020,2026,10
+Volkswagen,Virtus,2,135650,Automatic,first,Petrol,1799000,67825,2026,11
+Land Rover,Range Rover Evoque,3,38282,Automatic,second,Diesel,2345000,12761,2026,11
+Porsche,718,6,14182,Automatic,second,Petrol,2418000,2364,2026,11
+Maruti Suzuki,Wagon-R,7,51163,Automatic,first,Hybrid/CNG,467000,7309,2026,11
+Toyota,Innova,13,48800,Manual,first,Diesel,428000,3754,2026,11
+Hyundai,Verna,7,44463,Automatic,first,Diesel,909000,6352,2026,11
+Mahindra,Xuv500,7,62127,Manual,first,Diesel,1475000,8875,2026,11
+Maruti Suzuki,Wagon-R,3,70453,Manual,first,Petrol,492000,23484,2026,11
+Honda,Jazz,7,61488,Automatic,first,Petrol,473000,8784,2026,11
+Maruti Suzuki,Swift-Dzire,9,72411,Manual,first,Diesel,336000,8046,2026,11
+Toyota,Corolla Altis,10,72346,Automatic,second,Petrol,594000,7235,2026,10
+Maruti Suzuki,Wagon R,13,175176,Manual,first,Petrol,267000,13475,2026,6
+Hyundai,Verna,8,80027,Manual,second,Diesel,481000,10003,2026,11
+Toyota,Fortuner,10,162772,Automatic,second,Diesel,1303000,16277,2026,11
+Chevrolet,Cruze,10,60018,Automatic,first,Diesel,433000,6002,2026,11
+Hyundai,Venue,5,79456,Manual,second,Diesel,813000,15891,2026,11
+Maruti Suzuki,Ignis,1,13381,Manual,second,Petrol,592000,13381,2026,11
+Maruti Suzuki,Ciaz,7,58301,Manual,first,Diesel,595000,8329,2026,11
+Toyota,Innova,12,176922,Manual,second,Diesel,830000,14744,2026,11
+Hyundai,Grand I10,6,50055,Manual,second,Petrol,410000,8342,2026,11
+BMW,3 Series Gt,8,73810,Automatic,second,Diesel,1762000,9226,2026,11
+Isuzu,D-Max V-Cross,6,92244,Manual,first,Diesel,1306000,15374,2026,11
+Ford,Endeavour,7,72602,Automatic,first,Diesel,1792000,10372,2026,11
+Lexus,Lx,0,23602,Automatic,first,Diesel,2374000,23602,2026,11
+Toyota,Fortuner,2,177387,Automatic,first,Diesel,2438000,88694,2026,11
+Mercedes-Benz,G,13,163267,Automatic,second,Diesel,2326000,12559,2026,11
+Kia,Seltos,5,67323,Manual,first,Diesel,1232000,13465,2026,11
+Maruti Suzuki,Swift-Dzire,11,153970,Manual,second,Diesel,509000,13997,2026,11
+Hyundai,Fluidic Verna,12,81112,Manual,second,Petrol,284000,6759,2026,11
+Skoda,Rapid,11,55578,Automatic,second,Petrol,423000,5053,2026,11
+Mercedes-Benz,S-Class,8,58726,Automatic,first,Petrol,2440000,7341,2026,11
+Honda,City,6,73604,Automatic,second,Petrol,879000,12267,2026,11
+Maruti Suzuki,Swift-Dzire,7,66731,Automatic,second,Hybrid/CNG,568000,9533,2026,11
+BMW,3 Series Gt,10,94550,Automatic,second,Diesel,1777000,9455,2026,10
+Volvo,Xc40,5,79664,Automatic,first,Diesel,2368000,15933,2026,11
+Honda,City,20,79011,Manual,second,Petrol,97000,3951,2026,11
+Bajaj,Re60,17,1556,Automatic,first,Hybrid/CNG,371000,92,2026,11
+Jeep,Meridian,1,19447,Automatic,first,Diesel,2513000,19447,2026,11
+Maruti Suzuki,S-Cross,2,51819,Automatic,first,Petrol,873000,25910,2026,11
+BMW,5 Series,6,52008,Automatic,first,Diesel,2378000,8668,2026,11
+Maruti Suzuki,Alto,13,164077,Manual,second,Petrol,83000,12621,2026,11
+Tata,Tigor,1,20747,Manual,second,Hybrid/CNG,749000,20747,2026,11
+Rolls-Royce,Phantom Series Ii,9,11318,Automatic,second,Petrol,2371000,1258,2026,8
+Audi,A4,13,85042,Automatic,second,Diesel,563000,6542,2026,11
+Tata,Tiago,3,19972,Automatic,first,Petrol,682000,6657,2026,11
+MG,Hector,1,10903,Automatic,first,Petrol,2179000,10903,2026,11
+Volkswagen,Polo,5,59852,Automatic,first,Petrol,890000,11970,2026,11
+Maruti Suzuki,Eeco,14,119842,Automatic,second,Hybrid/CNG,181000,8560,2026,11
+Mahindra,Xuv 300,3,17848,Automatic,first,Petrol,1006000,5949,2026,11
+Audi,A6,8,40839,Automatic,first,Diesel,1600000,5105,2026,11
+Mahindra,Xuv500,7,72627,Automatic,second,Diesel,745000,10375,2026,11
+Toyota,Fortuner,9,158608,Automatic,second,Diesel,1242000,17623,2026,11
+Mini,Cooper Countryman,9,73155,Automatic,second,Petrol,1481000,8128,2026,11
+Aston Martin,Vanquish,8,164586,Automatic,first,Petrol,2351000,20573,2026,11
+Mahindra,Verito,13,159359,Manual,second,Diesel,206000,12258,2026,11
+Volkswagen,Polo,11,57653,Automatic,first,Petrol,403000,5241,2026,11
+Hyundai,Verna,12,51034,Automatic,second,Petrol,322000,4253,2026,11
+Fiat,Punto,10,78306,Automatic,second,Petrol,173000,7831,2026,11
+Maruti Suzuki,Swift-Dzire,6,70598,Automatic,first,Petrol,550000,11766,2026,11
+Volkswagen,Vento,11,167179,Automatic,first,Petrol,434000,15198,2026,11
+Ford,Ecosport,7,77246,Automatic,first,Petrol,590000,11035,2026,11
+Datsun,Go,5,70638,Automatic,second,Petrol,186000,14128,2026,11
+BMW,6 Series,6,54824,Automatic,first,Diesel,2421000,9137,2026,11
+Tata,Hexa,7,78009,Automatic,first,Diesel,769000,11144,2026,11
+Audi,Q3,9,99645,Automatic,second,Diesel,1203000,11072,2026,11
+Renault,Duster,4,22202,Automatic,first,Petrol,621000,5550,2026,11
+Honda,Amaze,9,38219,Manual,first,Petrol,467000,4247,2026,11
+Maruti Suzuki,Vitara-Brezza,6,90746,Manual,first,Diesel,779000,15124,2026,11
+Toyota,Innova Hycross,1,20653,Automatic,first,Hybrid/CNG,2340000,20653,2026,11
+Renault,Kiger,2,46282,Automatic,first,Petrol,638000,23141,2026,11
+Tata,Harrier,4,83694,Automatic,second,Diesel,1454000,20924,2026,11
+MG,Hector,3,62322,Automatic,first,Petrol,961000,20774,2026,11
+ICML,Rhino Rx,14,71079,Manual,second,Diesel,187000,5077,2026,11
+Hyundai,I20 N Line,1,14646,Automatic,first,Petrol,1050000,14646,2026,11
+Skoda,Kushaq,14,71008,Automatic,first,Petrol,392000,5072,2026,11
+Renault,Kwid,7,176029,Manual,second,Petrol,147000,25147,2026,11
