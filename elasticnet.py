@@ -16,7 +16,7 @@ def compute_loss(X, y, w, b, alpha, l1_ratio):
     n = len(y)
     y_pred = X @ w + b
 
-    mse = np.mean((y - y_pred)**2)
+    mse = np.mean((y - y_pred)**2) / 2 
     l1 = np.sum(np.abs(w))
     l2 = np.sum(w**2)
 
@@ -98,7 +98,7 @@ def elastic_net(X, y, alpha=1.0, l1_ratio=0.5, max_iter=1000, tol=1e-4):
             rho = (X[:, j] @ (y - y_pred + X[:, j] * w[j])) / n
             
             z_j = (X[:, j] @ X[:, j]) / n
-            new_w_j = soft_threshold(rho, alpha_l1) / (z_j + alpha_l2)
+            new_w_j = soft_threshold(rho, alpha_l1 / 2) / (z_j + alpha_l2 / 2)
             
             # Cập nhật y_pred ngay lập tức để j tiếp theo sử dụng thông tin mới nhất
             y_pred = y_pred + X[:, j] * (new_w_j - w[j])
