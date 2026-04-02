@@ -20,7 +20,14 @@ def clean_data(df):
         df['Age'] = df['Age'].clip(lower=0)
 
     # Feature engineering: km_per_year
+    """ 
+    Sửa câu cũ sai bản chất vì để Age = 0 --> 1:(
     df['km_per_year'] = (df['kmDriven'] / df['Age'].replace(0, 1)).round().astype(int)
+
+    """
+    df['km_per_year'] = df['kmDriven'] / df['Age'].replace(0, np.nan)
+    df['km_per_year'] = df['km_per_year'].fillna(df['km_per_year'].median())
+    df['km_per_year'] = df['km_per_year'].round().astype(int)
 
     # Chuẩn hóa model
     df['model'] = df['model'].astype(str).str.strip().str.lower()
@@ -38,6 +45,7 @@ def handle_outliers_iqr(df, columns):
             IQR = Q3 - Q1
             lower_bound = Q1 - 1.5 * IQR
             upper_bound = Q3 + 1.5 * IQR
+        
             df[col] = df[col].clip(lower=lower_bound, upper=upper_bound)
     return df
 
@@ -46,10 +54,11 @@ if __name__ == "__main__":
     df_raw = pd.read_csv(path)
 
     df_cleaned = clean_data(df_raw)
-    df_cleaned.to_csv(path, index=False, encoding='utf-8-sig')
-    print(f"Đã cập nhật dữ liệu sạch vào file {path}!")
 
-    numeric_cols = ['AskPrice', 'kmDriven', 'km_per_year']
+    numeric_cols = ['Age', 'kmDriven', 'km_per_year']  # bỏ AskPrice
     df_cleaned = handle_outliers_iqr(df_cleaned, numeric_cols)
+    
+    df_cleaned['AskPrice'] = np.log(df_cleaned['AskPrice'])
+
     df_cleaned.to_csv(path, index=False, encoding='utf-8-sig')
     print(f"Đã xử lý outliers và cập nhật dữ liệu vào file {path}!")
