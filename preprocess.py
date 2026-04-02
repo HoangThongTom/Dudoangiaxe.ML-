@@ -4,32 +4,27 @@ import numpy as np
 def clean_data(df):
     df = df.copy()
 
-    # Clean AskPrice
+    # AskPrice
     df['AskPrice'] = df['AskPrice'].astype(str).str.replace(r'[^\d]', '', regex=True)
     df['AskPrice'] = pd.to_numeric(df['AskPrice'], errors='coerce')
     df = df.dropna(subset=['AskPrice'])
 
-    # Clean kmDriven
+    # kmDriven
     df['kmDriven'] = df['kmDriven'].astype(str).str.replace(r'[^\d]', '', regex=True)
     df['kmDriven'] = pd.to_numeric(df['kmDriven'], errors='coerce')
     df['kmDriven'] = df['kmDriven'].fillna(df['kmDriven'].median())
 
-    # Xử lý Age
+    # Age
     if (df['Age'] < 0).any():
         print("Cảnh báo: Có giá trị Age âm, sẽ thay bằng 0.")
         df['Age'] = df['Age'].clip(lower=0)
 
-    # Feature engineering: km_per_year
-    """ 
-    Sửa câu cũ sai bản chất vì để Age = 0 --> 1:(
-    df['km_per_year'] = (df['kmDriven'] / df['Age'].replace(0, 1)).round().astype(int)
-
-    """
+    # km_per_year
     df['km_per_year'] = df['kmDriven'] / df['Age'].replace(0, np.nan)
     df['km_per_year'] = df['km_per_year'].fillna(df['km_per_year'].median())
     df['km_per_year'] = df['km_per_year'].round().astype(int)
 
-    # Chuẩn hóa model
+    # model
     df['model'] = df['model'].astype(str).str.strip().str.lower()
     df['model'] = df['model'].str.replace(r'[^a-z0-9\s-]', '', regex=True)
     df['model'] = df['model'].str.replace(r'\s+', ' ', regex=True).str.strip().str.title()

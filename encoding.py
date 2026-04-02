@@ -8,21 +8,15 @@ def encode_data(file_path):
     
     # One-Hot Encoding
     df = pd.get_dummies(df, columns=[c for c in cat_cols if c in df.columns], drop_first=True, dtype=int)
-    global_mean = df['AskPrice'].mean() # Giá trị dự phòng nếu gặp Brand/Model lạ
+    global_mean = df['AskPrice'].mean() 
     
     for col in ['Brand', 'model']:
         if col in df.columns:
-            
-            # Tính giá trung bình cho mỗi loại
             mean_map = df.groupby(col)['AskPrice'].mean()
-            
-            # Map giá trị đó vào cột mới
             df[f'{col}_encoded'] = df[col].map(mean_map)
-            
-            # Điền các giá trị rỗng (nếu có) bằng giá trung bình tổng thể
             df[f'{col}_encoded'] = df[f'{col}_encoded'].fillna(global_mean)
             df[f'{col}_encoded'] = df[f'{col}_encoded'].round(3)
-            # Xóa cột chữ gốc
+    
             df = df.drop(col, axis=1)
             
     # Chuẩn hóa phân phối Target (AskPrice) bằng Log Transform
