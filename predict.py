@@ -54,3 +54,28 @@ if y_true is not None:
     result["Error%"] = (result["Difference"] / result["AskPrice_Actual"] * 100).round(2)
 
 print(result.to_string())
+
+
+#CHỈ SỐ ĐÁNH GIÁ
+if y_true is not None:
+    from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+    
+    mae = mean_absolute_error(y_true, y_pred)
+    rmse = np.sqrt(mean_squared_error(y_true, y_pred))
+    r2 = r2_score(y_true, y_pred)
+
+    print("\n" + "="*30)
+    print("Đánh giá: ")
+    print(f"- Sai số tuyệt đối trung bình: {mae:,.0f} VNĐ")
+    print(f"- Sai số căn bậc hai: {rmse:,.0f} VNĐ")
+    print(f"- Độ chính xác (R2 Score): {r2:.4f} ({r2*100:.2f}%")
+
+#ĐÁNH GIÁ
+if r2 > 0.8:
+    print("=> Đánh giá: Mô hình hoạt động tốt.")
+elif r2 > 0.5:
+    print("=> Đánh giá: Mô hình tạm ổn.)
+else:
+    print("=> Đánh giá: Mô hình chưa đạt yêu cầu.)
+print("="*30)
+    
