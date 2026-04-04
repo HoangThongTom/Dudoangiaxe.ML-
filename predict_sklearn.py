@@ -4,104 +4,57 @@ import pickle
 from preprocess import clean_data, handle_outliers_iqr
 from encoding import transform_target_encoder
 
-#LOAD MODEL
+# Load lại toàn bộ "bộ não" đã lưu ở bước Train
 def load_sklearn_model(model_path="elastic_model_sklearn.pkl"):
-    """
-    Load model đã train từ file pickle
-
-    Args:
-        model_path (str): Đường dẫn file model .pkl
-
-    Returns:
-        dict: Dictionary chứa model, scaler, columns, target_maps
-    """
     with open(model_path, "rb") as f:
-        model_dict = pickle.load(f)
-    return model_dict
+        return pickle.load(f)
 
-# PREDICT FUNCTION
+# Hàm xử lý dữ liệu mới và dự đoán
 def preprocess_and_predict(new_data, model_dict):
-    """
-    Xử lý dữ liệu mới và dự đoán giá xe
+    # Trích xuất các tham số đã lưu
+    model = model_dict["model"]
+    scaler = model_dict["scaler"]
+    columns_final = model_dict["columns"]
+    target_maps = model_dict["target_maps"]
+    global_mean = model_dict["global_mean"]
 
-    Args:
-        new_data: DataFrame hoặc đường dẫn file CSV
-        model_dict: Dictionary chứa model + pipeline
-
-    Returns:
-        predictions: Array chứa dự đoán giá
-    """
-    # LOAD MODEL COMPONENTS
-    # Lấy các thành phần từ model dictionary
-    model = model_dict["model"]  # Model Elastic Net
-    scaler = model_dict["scaler"]  # Scaler để chuẩn hoá
-    columns_final = model_dict["columns"]  # Danh sách cột sau encoding
-    target_maps = model_dict["target_maps"]  # Ánh xạ target encoding
-    global_mean = model_dict["global_mean"]  # Trung bình giá cho target encoding
-
-    # LOAD DATA
-    # Load dữ liệu từ file hoặc DataFrame
+    # Đọc dữ liệu (từ đường dẫn file hoặc DataFrame)
     if isinstance(new_data, str):
         X = pd.read_csv(new_data)
     else:
         X = new_data.copy()
 
-    # PREPROCESSING 
-    # Làm sạch dữ liệu giống như quá trình training
+    # Làm sạch giống hệt lúc Train
     X = clean_data(X)
-
-    # Xoá outliers
     numeric_cols = ['kmDriven', 'km_per_year']
     X = handle_outliers_iqr(X, numeric_cols)
 
-    # TARGET ENCODING
-    # Áp dụng ánh xạ target encoding đã học từ training
+    # Encode bằng TỪ ĐIỂN CŨ (target_maps) của lúc Train
     for col in ['Brand', 'model']:
         if col in X.columns and col in target_maps:
             mean_map = target_maps[col]
             X[col] = transform_target_encoder(X, col, mean_map, global_mean)
 
-    #ONE-HOT ENCODING
-    # Chuyển categorical thành binary encoding
+    # One-hot và ép số lượng cột khớp 100% với lúc Train (cột nào mới xuất hiện thì bỏ, cột nào thiếu thì điền 0)
     X = pd.get_dummies(X, drop_first=True)
-
-    # ALIGN COLUMNS
-    # Đảm bảo cột của dữ liệu mới khớp với training (QUAN TRỌNG!)
     X = X.reindex(columns=columns_final, fill_value=0)
+    
+    X = X.apply(pd.to_numeric, errors='coerce').fillna(0)
+    X_np = X.values.astype(np.float64)
 
-    # FIX DATA TYPES
-    # Xử lý kiểu dữ liệu tương tự training
-    X = X.apply(pd.to_numeric, errors='coerce')
-    X = X.fillna(0)
+    # Chuẩn hóa (Scale) dữ liệu bằng SCALER CŨ
+    X_scaled = scaler.transform(X_np)
 
-    #CONVERT TO NUMPY & SCALE
-    # Chuyển sang numpy array
-    X = X.values.astype(np.float64)
-
-    # Chuẩn hoá dữ liệu (dùng scaler từ training)
-    X = scaler.transform(X)
-
-    # PREDICT
-    # Dự đoán giá
-    predictions = model.predict(X)
-
+    # Gọi hàm predict của scikit-learn để đưa ra kết quả
+    predictions = model.predict(X_scaled)
     return predictions
 
-
-# MAIN - TEST PREDICTION
 if __name__ == "__main__":
-    # Load model từ file pickle
     model_dict = load_sklearn_model("elastic_model_sklearn.pkl")
-
-    # Load dữ liệu test
-    df_test = pd.read_csv("Data_CarPrice.csv")
-
-    # Dự đoán giá cho tất cả xe
+    df_test = pd.read_csv("Data_CarPrice.csv") # Ở đây có thể thay bằng file chứa xe mới chưa có giá
+    
     predictions = preprocess_and_predict(df_test, model_dict)
-
-    # In kết quả
+    
     print(f"Dự đoán {len(predictions)} mẫu")
     print(f"Giá trung bình dự đoán: {predictions.mean():.2f}")
     print(f"Min: {predictions.min():.2f}, Max: {predictions.max():.2f}")
-    print(f"\n5 dự đoán đầu tiên:")
-    print(predictions[:5])
