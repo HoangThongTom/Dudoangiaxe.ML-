@@ -13,19 +13,7 @@ def encode_data(file_path):
     df = pd.get_dummies(df, columns=cols_to_encode, drop_first=True, dtype=int)
 
     """"
-    Mô hình đang biết trước kết quả do lấy trung bình giá xe để đại diễn cho thương hiệu
-        global_mean = df['AskPrice'].mean() 
-    Sửa Brand_encodel và model_encoded, thử nghiệm theo hướng gom nhón 20 thương hiệu xuất hiện nhiều nhất và 'other'
-    """
-    """ Cũ
-    for col in ['Brand', 'model']:
-        if col in df.columns:
-            mean_map = df.groupby(col)['AskPrice'].mean()
-            df[f'{col}_encoded'] = df[col].map(mean_map)
-            df[f'{col}_encoded'] = df[f'{col}_encoded'].fillna(global_mean)
-            df[f'{col}_encoded'] = df[f'{col}_encoded'].round(3)
-    
-            df = df.drop(col, axis=1)
+    Sửa Brand_encoded và model_encoded, thử nghiệm theo hướng gom nhón 20 thương hiệu xuất hiện nhiều nhất và 'other'
     """
     # giữ Brand vì chỉ loanh quanh ít hãng 
     if 'Brand' in df.columns:

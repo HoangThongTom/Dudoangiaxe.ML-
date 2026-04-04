@@ -4,27 +4,22 @@ import numpy as np
 def clean_data(df):
     df = df.copy()
 
-    # AskPrice
     df['AskPrice'] = df['AskPrice'].astype(str).str.replace(r'[^\d]', '', regex=True)
     df['AskPrice'] = pd.to_numeric(df['AskPrice'], errors='coerce')
     df = df.dropna(subset=['AskPrice'])
 
-    # kmDriven
     df['kmDriven'] = df['kmDriven'].astype(str).str.replace(r'[^\d]', '', regex=True)
     df['kmDriven'] = pd.to_numeric(df['kmDriven'], errors='coerce')
     df['kmDriven'] = df['kmDriven'].fillna(df['kmDriven'].median())
 
-    # Age
     if (df['Age'] < 0).any():
         print("Cảnh báo: Có giá trị Age âm, sẽ thay bằng 0.")
         df['Age'] = df['Age'].clip(lower=0)
 
-    # km_per_year
     df['km_per_year'] = df['kmDriven'] / df['Age'].replace(0, np.nan)
     df['km_per_year'] = df['km_per_year'].fillna(df['km_per_year'].median())
     df['km_per_year'] = df['km_per_year'].round().astype(int)
 
-    # model
     df['model'] = df['model'].astype(str).str.strip().str.lower()
     df['model'] = df['model'].str.replace(r'[^a-z0-9\s-]', '', regex=True)
     df['model'] = df['model'].str.replace(r'\s+', ' ', regex=True).str.strip().str.title()
@@ -50,7 +45,7 @@ if __name__ == "__main__":
 
     df_cleaned = clean_data(df_raw)
 
-    numeric_cols = ['Age', 'kmDriven', 'km_per_year']  # bỏ AskPrice
+    numeric_cols = ['Age', 'kmDriven', 'km_per_year']  
     df_cleaned = handle_outliers_iqr(df_cleaned, numeric_cols)
     
     df_cleaned['AskPrice'] = np.log(df_cleaned['AskPrice'])
