@@ -16,7 +16,7 @@ def compute_loss(X, y, w, b, alpha, l1_ratio):
     n = len(y)
     y_pred = X @ w + b
 
-    mse = np.mean((y - y_pred)**2) / 2 
+    mse = np.sum((y - y_pred)**2) / (2 * n)
     l1 = np.sum(np.abs(w))
     l2 = np.sum(w**2)
 
@@ -86,26 +86,40 @@ def elastic_net(X, y, alpha=1.0, l1_ratio=0.5, max_iter=1000, tol=1e-4):
     for iteration in range(max_iter):
         w_old = w.copy()
         
-        # 1. Cập nhật bias (b) một lần cho mỗi vòng lặp lớn
-        y_pred = X @ w + b
-        b = b + np.mean(y - y_pred)
+        # 1. Cập nhật bias (b)
+        # b = trung bình của (y - Xw)
+        b = np.mean(y - X @ w)
         
-        # 2. Cập nhật từng w_j
-        y_pred = X @ w + b # Cập nhật lại y_pred sau khi đổi b
+        # Tính toán dự đoán hiện tại để lấy phần dư (residual)
+        y_pred = X @ w + b
+        residual = y - y_pred
+        
+        # 2. Cập nhật từng w_j (Coordinate Descent)
         for j in range(p):
-            # Tính rho mà không cần nhân lại toàn bộ ma trận
-            # residual_j = y - (y_pred - X[:, j] * w[j])
-            rho = (X[:, j] @ (y - y_pred + X[:, j] * w[j])) / n
+            # Lấy riêng cột j để tính toán
+            X_j = X[:, j]
             
-            z_j = (X[:, j] @ X[:, j]) / n
-            new_w_j = soft_threshold(rho, alpha_l1 / 2) / (z_j + alpha_l2 / 2)
+            # Tính rho_j: Tương quan giữa cột j và phần dư (có cộng ngược đóng góp của w[j] cũ)
+            # rho = (1/n) * X_j^T * (residual + X_j * w_j)
+            rho = (X_j @ residual) / n + (X_j @ X_j * w[j]) / n
             
-            # Cập nhật y_pred ngay lập tức để j tiếp theo sử dụng thông tin mới nhất
-            y_pred = y_pred + X[:, j] * (new_w_j - w[j])
-            w[j] = new_w_j
-        # Kiểm tra hội tụ
-        print(f"  Loop: {iteration+1} - Loss: {compute_loss(X, y, w, b, alpha, l1_ratio):.4f}")
-        if np.max(np.abs(w - w_old)) < tol:
+            # Mẫu số z_j: (1/n) * sum(X_j^2) + phần Ridge (L2)
+            z_j = (X_j @ X_j) / n + alpha_l2
+            
+            # Áp dụng Soft Thresholding cho phần Lasso (L1)
+            new_w_j = soft_threshold(rho, alpha_l1) / z_j
+            
+            # Cập nhật residual ngay lập tức để j sau sử dụng
+            if new_w_j != w[j]:
+                residual = residual - X_j * (new_w_j - w[j])
+                w[j] = new_w_j
+
+        # Kiểm tra hội tụ (Sử dụng hàm loss bạn đã viết)
+        current_loss = compute_loss(X, y, w, b, alpha, l1_ratio)
+        if (iteration + 1) % 10 == 0: # In mỗi 10 vòng để tránh lag terminal
+            print(f"  Loop: {iteration+1} - Loss: {current_loss:.4f}")
+            
+        if np.linalg.norm(w - w_old, ord=1) < tol:
             print(f"  Hội tụ sau {iteration+1} vòng lặp")
             break
 
