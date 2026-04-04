@@ -47,8 +47,6 @@ if __name__ == "__main__":
 
     numeric_cols = ['Age', 'kmDriven', 'km_per_year']  
     df_cleaned = handle_outliers_iqr(df_cleaned, numeric_cols)
-    
-    df_cleaned['AskPrice'] = np.log(df_cleaned['AskPrice'])
 
     df_cleaned.to_csv(path, index=False, encoding='utf-8-sig')
     print(f"Đã xử lý outliers và cập nhật dữ liệu vào file {path}!")
