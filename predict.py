@@ -68,14 +68,14 @@ if y_true is not None:
     print("Đánh giá: ")
     print(f"- Sai số tuyệt đối trung bình: {mae:,.0f} VNĐ")
     print(f"- Sai số căn bậc hai: {rmse:,.0f} VNĐ")
-    print(f"- Độ chính xác (R2 Score): {r2:.4f} ({r2*100:.2f}%")
+    print(f"- Độ chính xác (R2 Score): {r2:.2f} ({r2*100:.2f}%")
 
 #ĐÁNH GIÁ
 if r2 > 0.8:
-    print("=> Đánh giá: Mô hình hoạt động tốt.")
+    print("=> Đánh giá: Mô hình hoạt động tốt")
 elif r2 > 0.5:
-    print("=> Đánh giá: Mô hình tạm ổn.)
+    print("=> Đánh giá: Mô hình tạm ổn")
 else:
-    print("=> Đánh giá: Mô hình chưa đạt yêu cầu.)
+    print("=> Đánh giá: Mô hình chưa đạt yêu cầu")
 print("="*30)
     
