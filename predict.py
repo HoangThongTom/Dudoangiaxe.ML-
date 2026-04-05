@@ -65,10 +65,10 @@ if y_true is not None:
     r2 = r2_score(y_true, y_pred)
 
     print("\n" + "="*30)
-    print("Đánh giá: ")
+    print("ĐÁNH GIÁ: ")
     print(f"- Sai số tuyệt đối trung bình: {mae:,.0f} VNĐ")
     print(f"- Sai số căn bậc hai: {rmse:,.0f} VNĐ")
-    print(f"- Độ chính xác (R2 Score): {r2:.2f} ({r2*100:.2f}%")
+    print(f"- Độ chính xác (R2 Score): {r2:.4f} ({r2*100:.2f}%")
 
 #ĐÁNH GIÁ
 if r2 > 0.8:
